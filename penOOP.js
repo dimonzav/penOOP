@@ -16,3 +16,23 @@ function Pen(size, color, material, ink, inkColor) {
 var pen = new Pen("big", "red", "metal", "gel", "black");
 pen.getType();
 pen.write();
+
+function autoPen() { 
+    Pen.apply(this, ["medium", "black", "metal", "oil", "green"]);
+    this.type = "autopen";
+    this.openClose = function () {
+        var status = prompt("Want to write something? Yes or No");
+        if(status == "yes") {
+            console.log("Ready to write something");
+            this.write();
+        }
+        else if (status == "no") {
+            console.log("Maybe another time...");
+        }
+    };
+}
+
+autoPen.prototype = Object.create(Pen.prototype);
+var autopen = new autoPen();
+autopen.getType();
+autopen.openClose();
