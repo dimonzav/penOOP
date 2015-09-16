@@ -46,3 +46,9 @@ function autoPencil() {
         console.log("Pencil is ready to draw or write!");
     };
 }
+
+autoPencil.prototype = Object.create(autoPen.prototype);
+var autopencil = new autoPencil();
+autopencil.replaceRod("graphite");
+autopencil.getType();
+autopencil.openClose();
