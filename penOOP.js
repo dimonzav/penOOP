@@ -52,3 +52,24 @@ var autopencil = new autoPencil();
 autopencil.replaceRod("graphite");
 autopencil.getType();
 autopencil.openClose();
+
+function coloredPen() {
+    autoPencil.apply(this, ["medium", "black", "metal", "oil"]);
+    this.type = "colored pen";
+    this.setManyColors = function(color1, color2, color3, color4) {
+        this.inkColor = color1;
+        this.inkColor2 = color2;
+        this.inkColor3 = color3;
+        this.inkColor4 = color4;
+    };
+    this.getType = function () {
+        console.log("You create " + this.material + " " + this.size + " " + this.color + " " + this.type + " " + "with " + this.inkType + " ink and " + 
+        this.inkColor + " " + this.inkColor2 + " " + this.inkColor3 + " " + this.inkColor4 + " color");    
+    };
+}
+
+coloredPen.prototype = Object.create(autoPencil.prototype);
+var colored_pen = new coloredPen();
+colored_pen.setManyColors("blue", "red", "green", "orange");
+colored_pen.getType();
+colored_pen.openClose();
