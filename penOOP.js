@@ -36,3 +36,13 @@ autoPen.prototype = Object.create(Pen.prototype);
 var autopen = new autoPen();
 autopen.getType();
 autopen.openClose();
+
+function autoPencil() {
+    autoPen.apply(this, ["small", "brown", "wood"]);
+    this.type = "autopencil";
+    this.replaceRod = function (newRod) {
+        this.inkType = newRod;
+        this.inkColor = "grey";
+        console.log("Pencil is ready to draw or write!");
+    };
+}
